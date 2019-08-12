@@ -1,0 +1,30 @@
+#bird-container {
+  background-color: #72e8a7;
+  border-radius: 20px;
+  margin: 1em;
+  padding: 1em;
+  display: inline-block;
+}
+
+#scope-container {
+  display: inline-block;
+  margin: .5em;
+  transform: rotate3d(1, 1, 1, 12.3deg);
+  position: relative;
+  top: -50px;
+  right: -37px;
+}
+
+#bird-graphic {
+  margin: .5em;
+  height: 200px;
+  width: 200px;
+  display: inline-block;
+}
+
+tone-oscilloscope {
+  height: 200px;
+  width: 200px;
+  display: inline-block;
+  background: transparent;
+}

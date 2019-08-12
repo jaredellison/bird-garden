@@ -5,7 +5,7 @@ const startChirping = () => {
     window.bird.trigger();
   }, 1000);
 
-
+  document.querySelector('tone-oscilloscope').bind(bird.voice.output);
 };
 
 let started = false;
