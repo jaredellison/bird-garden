@@ -4,16 +4,13 @@
   "description": "",
   "main": "client/index.html",
   "dependencies": {
-    "cypress": "^3.4.1",
-    "enzyme": "^3.10.0",
-    "eslint-plugin-react-hooks": "^1.6.1",
-    "jest": "^24.8.0",
+    "@tonejs/ui": "0.0.8",
     "live-server": "^1.2.1",
     "tone": "^13.4.9"
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "live-server client"
   },
   "repository": {
     "type": "git",
