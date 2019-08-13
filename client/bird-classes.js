@@ -28,8 +28,15 @@ const dbScale = n => {
   return Math.log10(n) * 20;
 };
 
+let masterReverb = new Tone.JCReverb({
+  roomSize  : 0.7
+  });
+masterReverb.wet.value = 0.05;
+masterReverb.toMaster();
+
 let masterVolume = new Tone.Volume();
-masterVolume.toMaster();
+masterVolume.connect(masterReverb);
+masterVolume.mute = true;
 
 ////////////////////////////////////////////////////////////
 //
@@ -83,10 +90,10 @@ class AmpMod {
 
     // Tone modules
     this.envelope = new Tone.Envelope({
-      "attack" : 0.1,
-      "decay" : 0.1,
-      "sustain" : 0.1,
-      "release" : 0.1,
+      attack: 0.1,
+      decay: 0.1,
+      sustain: 0.1,
+      release: 0.1
     });
     this.vca = new Tone.Multiply();
 
@@ -114,11 +121,11 @@ class AmpMod {
   }
 
   set attack(value) {
-   this.envelope.attack = value / 1000;
+    this.envelope.attack = value / 1000;
   }
 
   get attack() {
-   return this.envelope.attack;
+    return this.envelope.attack;
   }
 
   set decay(value) {
@@ -145,19 +152,19 @@ class BirdVoice {
     /////////////////////
     //  Tone modules
     // Frequency Modulation
-    this.freqModLfo = new Tone.Oscillator(440, "sine").start();
+    this.freqModLfo = new Tone.Oscillator(440, 'sine').start();
     this.freqModVca1 = new Tone.Multiply();
     this.freqModOffset = new Tone.Add(1);
     this.freqModVca2 = new Tone.Multiply();
 
     // Amplitude Modulation
-    this.ampModLfo = new Tone.Oscillator(440, "sine").start();
+    this.ampModLfo = new Tone.Oscillator(440, 'sine').start();
     this.ampModVca1 = new Tone.Multiply(0);
     this.ampModVca2 = new Tone.Multiply(-1);
     this.ampModOffset = new Tone.Add(-1);
 
     // Main Voice
-    this.osc = new Tone.Oscillator(440, "sine").start();
+    this.osc = new Tone.Oscillator(440, 'sine').start();
     this.env = new Tone.Envelope();
     this.vca = new Tone.Volume();
 
@@ -188,12 +195,12 @@ class BirdVoice {
     this.output = this.vca;
   }
 
-  set ifrq(value){
+  set ifrq(value) {
     this._ifrq = value;
-    this.freqModVca2.value = (value * 7000) + 300;
+    this.freqModVca2.value = value * 7000 + 300;
   }
 
-  get ifrq(){
+  get ifrq() {
     return this._ifrq;
   }
 
@@ -207,7 +214,7 @@ class BirdVoice {
 
 class Bird {
   constructor() {
-    this.voice = new BirdVoice(1,2);
+    this.voice = new BirdVoice(1, 2);
     this.freq1 = new FreqMod();
     this.freq2 = new FreqMod();
     this.amp2 = new AmpMod();
@@ -244,7 +251,7 @@ class Bird {
   ////////////////////
   //  amp-atk
   set ampAtk(value) {
-    this.voice.env.attack = ((value * 900) / 1000) + .001;
+    this.voice.env.attack = (value * 900) / 1000 + 0.001;
   }
 
   get ampAtk() {
@@ -254,7 +261,7 @@ class Bird {
   ////////////////////
   //  amp-dcy
   set ampDcy(value) {
-    this.voice.env.release = ((value * 900) / 1000) + .001;
+    this.voice.env.release = (value * 900) / 1000 + 0.001;
   }
 
   get ampDcy() {
