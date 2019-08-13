@@ -104,4 +104,3 @@ document
 // document.querySelector('tone-oscilloscope').bind(bird.voice.freqModOffset);
 // document.querySelector('tone-oscilloscope').bind(bird.voice.freqModVca2);
 // document.querySelector('tone-oscilloscope').bind(bird.voice.vca);
-// document.querySelector('tone-oscilloscope').bind(bird.voice.output);
