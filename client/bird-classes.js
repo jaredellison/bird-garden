@@ -45,12 +45,7 @@ class FreqMod {
     this.modulationScale = 3000;
 
     // Tone modules
-    this.envelope = new Tone.Envelope({
-      "attack" : 0.1,
-      "decay" : 0.1,
-      "sustain" : 0.1,
-      "release" : 0.1,
-    });
+    this.envelope = new Tone.Envelope();
     this.vca = new Tone.Multiply();
     this.multiply = new Tone.Multiply(this.modulationScale);
 
@@ -127,7 +122,7 @@ class AmpMod {
   }
 
   set decay(value) {
-    this.envelope.release = value / 1000;
+    this.envelope.decay = value / 1000;
   }
 
   get decay() {
