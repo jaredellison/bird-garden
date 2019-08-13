@@ -13,8 +13,8 @@
 ### Usage
 
 ```bash
-# Clone repo
-git clone https://github.com/jaredellison/bird-garden
+# Clone repo and change into the new directory
+git clone https://github.com/jaredellison/bird-garden && cd bird-garden
 
 # Install dependencies
 npm install
@@ -23,4 +23,4 @@ npm install
 npm start
 ```
 
-Note: User interaction is required to start audio playback - turn up the volume, adjust the frequency and start playing.
+User interaction is required to start audio playback - turn up the volume, adjust the frequency and start playing.
