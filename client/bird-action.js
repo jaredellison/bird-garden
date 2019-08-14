@@ -1,33 +1,12 @@
 const startChirping = () => {
-  window.bird = new Bird();
   // Chirp at random interval
   randomChirp();
 
-  // Chirp at regular interval
+  // Chirp at regular interval (uncomment for debugging)
   // setInterval(() => {
   //   window.bird.trigger();
   // }, 1000);
-
-  document.querySelector('tone-oscilloscope').bind(bird.voice.output);
 };
-
-let started = false;
-
-// An initiall interaction is required to start audio
-let volumeSlider = document.querySelector('#volume');
-volumeSlider.addEventListener('input', e => {
-  if (!started) {
-    started = true;
-    Tone.context.resume();
-    startChirping();
-  }
-
-  masterVolume.volume.value = dbScale(e.target.value);
-  setTimeout(() => {
-    masterVolume.mute = false;
-  }, 1000);
-});
-
 
 let randomChirp = () => {
   let time = Math.random() * 5000 + 100;
@@ -36,3 +15,32 @@ let randomChirp = () => {
     randomChirp();
   }, time);
 }
+
+
+
+////////////////////////////////////////////////////////////
+//
+//    Main Action:
+
+// Create instance of bird class;
+
+let started = false;
+
+// An initial interaction with the volume slider is required to start audio
+document.querySelector('#volume').addEventListener('input', e => {
+  if (!started) {
+    window.bird = new Bird();
+    started = true;
+    Tone.context.resume();
+    // Unmute master volume and start chirping
+    setTimeout(() => {
+      masterVolume.mute = false;
+      startChirping();
+    }, 2000);
+  }
+
+  masterVolume.volume.value = dbScale(e.target.value);
+
+  // Connect oscilloscope
+  document.querySelector('tone-oscilloscope').bind(bird.voice.output);
+});
