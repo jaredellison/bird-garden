@@ -1,37 +1,43 @@
 // Variables
 // All scaled between 0 and 1
-const params = {
-  freq: 0,
-  amp: {
-    attack: 0,
-    decay: 0
-  },
-  freqMod: {
-    mod1: 0,
-    attack1: 0,
-    decay1: 0,
-    mod2: 0,
-    attack2: 0,
-    decay2: 0
-  },
-  ampMod: {
-    mod1: 0,
-    attack1: 0,
-    decay1: 0,
-    mod2: 0,
-    attack2: 0,
-    decay2: 0
-  }
-};
+// const params = {
+//   freq: 0,
+//   amp: {
+//     attack: 0,
+//     decay: 0
+//   },
+//   freqMod: {
+//     mod1: 0,
+//     attack1: 0,
+//     decay1: 0,
+//     mod2: 0,
+//     attack2: 0,
+//     decay2: 0
+//   },
+//   ampMod: {
+//     mod1: 0,
+//     attack1: 0,
+//     decay1: 0,
+//     mod2: 0,
+//     attack2: 0,
+//     decay2: 0
+//   }
+// };
+
+////////////////////
+//  Utility Functions
 
 const dbScale = n => {
   return Math.log10(n) * 20;
 };
 
+////////////////////
+//  Global instances
+
 let masterReverb = new Tone.JCReverb({
   roomSize  : 0.7
   });
-masterReverb.wet.value = 0.05;
+masterReverb.wet.value = 0.025;
 masterReverb.toMaster();
 
 let masterVolume = new Tone.Volume();
@@ -155,7 +161,7 @@ class BirdVoice {
     this.freqModLfo = new Tone.Oscillator(440, 'sine').start();
     this.freqModVca1 = new Tone.Multiply();
     this.freqModOffset = new Tone.Add(1);
-    this.freqModVca2 = new Tone.Multiply();
+    this.freqModVca2 = new Tone.Multiply(300);
 
     // Amplitude Modulation
     this.ampModLfo = new Tone.Oscillator(440, 'sine').start();
