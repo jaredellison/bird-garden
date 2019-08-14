@@ -1,9 +1,47 @@
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  font-family: sans-serif;
+}
+
+section {
+  display: inline-block;
+  margin: .5em 0;
+}
+
+h1 {
+  font-size: 20pt;
+  font-weight: bold;
+}
+
+h2 {
+  font-size: 14pt;
+  font-weight: bold;
+  padding: .25em 0;
+}
+
+label {
+  font-size: 10pt;
+}
+
+#title{
+  padding: 1em 1em 0 1em;
+}
+
 #bird-container {
   background-color: #16ca66;
-  border-radius: 20px;
+  border-radius: 1em;
   margin: 1em;
   padding: 1em;
   display: inline-block;
+  min-width: 500px;
 }
 
 #scope-container {
@@ -22,6 +60,7 @@
   display: inline-block;
 }
 
+
 tone-oscilloscope {
   height: 200px;
   width: 200px;
@@ -31,6 +70,7 @@ tone-oscilloscope {
 
 #control-container {
   border: 1px solid black;
+  margin: 1em;
   padding: 1em;
   display: inline-block;
   border-radius: 1em;
