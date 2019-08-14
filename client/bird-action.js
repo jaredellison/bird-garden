@@ -16,16 +16,11 @@ let randomChirp = () => {
   }, time);
 }
 
-
-
 ////////////////////////////////////////////////////////////
 //
 //    Main Action:
 
-// Create instance of bird class;
-
 let started = false;
-
 // An initial interaction with the volume slider is required to start audio
 document.querySelector('#volume').addEventListener('input', e => {
   if (!started) {

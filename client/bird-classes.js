@@ -1,6 +1,6 @@
-// Variables
-// All scaled between 0 and 1
-// const params = {
+// Schema for bird parameters
+// All values scaled between 0 and 1
+//  const birdParams = {
 //   freq: 0,
 //   amp: {
 //     attack: 0,
